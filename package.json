@@ -1,6 +1,7 @@
 {
 	"name": "@rbxts/easy-topbar-plus",
-	"version": "3.0.1-ts.0",
+	"version": "3.0.1-ts.1",
+	"description": "A port of 1ForeverHD's Topbar+ package for the roblox-ts ecosystem. With LemonSignal instead of GoodSignal.",
 	"main": "dist/init.lua",
 	"keywords": ["topbar", "ui"],
 	"author": "kineticwallet",
@@ -9,6 +10,13 @@
 	"files": ["dist", "!**/*.tsbuildinfo"],
 	"publishConfig": {
 		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/kineticwallet/roblox-ts-easy-topbar-plus"
+	},
+	"bugs": {
+		"url": "https://github.com/kineticwallet/roblox-ts-easy-topbar-plus/issues"
 	},
 	"packageManager": "pnpm@8.15.6+sha256.01c01eeb990e379b31ef19c03e9d06a14afa5250b82e81303f88721c99ff2e6f",
 	"devDependencies": {
@@ -22,7 +30,6 @@
 	},
 	"dependencies": {
 		"@rbxts/janitor": "1.15.7-ts.0",
-		"@rbxts/lemon-signal": "1.10.0-ts.1",
-		"@rbxts/services": "^1.5.4"
+		"@rbxts/lemon-signal": "1.10.0-ts.2"
 	}
 }
