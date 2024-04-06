@@ -143,8 +143,11 @@ function Gamepad.registerButton(buttonInstance)
 		end
 		local isSelected = GuiService.SelectedObject == buttonInstance
 		local unselectKeyCodes = { "ButtonB", "ButtonSelect" }
-		if table.find(unselectKeyCodes, input.KeyCode.Name) and isSelected then
-			GuiService.SelectedObject = nil
+		local keyName = input.KeyCode.Name
+		if table.find(unselectKeyCodes, keyName) and isSelected then
+			if not (keyName == "ButtonSelect" and not GamepadService.GamepadCursorEnabled) then
+				GuiService.SelectedObject = nil
+			end
 		end
 	end)
 	buttonInstance.Destroying:Once(function()

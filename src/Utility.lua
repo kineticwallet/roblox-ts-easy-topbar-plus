@@ -180,24 +180,7 @@ function Utility.formatStateName(incomingStateName)
 end
 
 function Utility.localPlayerRespawned(callback)
-	task.spawn(function()
-		local character = localPlayer.Character or localPlayer.CharacterAdded:Wait()
-		local humanoid
-		for i = 1, 5 do
-			humanoid = character:FindFirstChildOfClass("Humanoid")
-			if humanoid then
-				break
-			end
-			task.wait(1)
-		end
-		if humanoid then
-			humanoid.Died:Once(function()
-				task.delay(Players.RespawnTime - 0.1, function()
-					callback()
-				end)
-			end)
-		end
-	end)
+	localPlayer.CharacterRemoving:Connect(callback)
 end
 
 function Utility.getClippedContainer(screenGui)
@@ -444,11 +427,15 @@ function Utility.joinFeature(originalIcon, parentIcon, iconsArray, scrollingFram
 		end
 		local Icon = require(originalIcon.iconModule)
 		local parentIcon = Icon.getIconByUID(originalIcon.parentIconUID)
+		if not parentIcon then
+			return
+		end
 		originalIcon:setAlignment(originalIcon.originalAlignment)
 		originalIcon.parentIconUID = false
 		originalIcon.joinedFrame = false
 		originalIcon:setBehaviour("IconButton", "BackgroundTransparency", nil, true)
 		originalIcon:removeModification("JoinModification")
+
 		local parentHasNoChildren = true
 		local parentChildIcons = parentIcon.childIconsDict
 		parentChildIcons[originalIconUID] = nil

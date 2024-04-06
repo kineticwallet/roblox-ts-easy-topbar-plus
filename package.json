@@ -1,6 +1,6 @@
 {
 	"name": "@rbxts/easy-topbar-plus",
-	"version": "3.0.1-ts.1",
+	"version": "3.0.2-ts.0",
 	"description": "A port of 1ForeverHD's Topbar+ package for the roblox-ts ecosystem. With LemonSignal instead of GoodSignal.",
 	"main": "dist/init.lua",
 	"keywords": ["topbar", "ui"],
